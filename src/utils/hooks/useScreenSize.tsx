@@ -1,8 +1,28 @@
-import { useContext } from "react";
-import { ScreenSizeContext } from "../context/ScreenSize.context";
+import { useState, useEffect } from 'react'
+
+interface ScreenSize {
+    screenWidth: number
+    screenHeight: number
+}
 
 export function useScreenSize() {
-    const { width, height } = useContext(ScreenSizeContext)
+    const [screenSize, setScreenSize] = useState<ScreenSize>({
+        screenWidth: window.innerWidth,
+        screenHeight: window.innerHeight,
+    })
 
-    return { screenWidth: width, screenHeight: height }
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize({
+                screenWidth: window.innerWidth,
+                screenHeight: window.innerHeight,
+            })
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+
+    return screenSize
 }
