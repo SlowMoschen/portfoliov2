@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { COLORS } from "../../utils/configs/colors"
 import { getIntInRange, omitKeys } from "../../utils/helper"
 import { useScreenSize } from "../../utils/hooks/useScreenSize"
@@ -16,6 +16,11 @@ const CONFIG = {
             max: 0.2,
         }
     },
+    colorChances: {
+        primary: 0.7,
+        secondary: 0.1,
+        accent: 0.2,
+    }
 }
 
 interface Particle {
@@ -29,15 +34,21 @@ interface Particle {
 
 export default function Background() {
     const { screenWidth, screenHeight } = useScreenSize()
+    console.log(screenWidth, screenHeight)
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
     const getRandomColor = () => {
         const colorKeys = omitKeys(COLORS, ['background', 'text'])
-        const colors = Object.keys(colorKeys) as (keyof typeof colorKeys)[]
-        return COLORS[colors[Math.floor(Math.random() * colors.length)]]
+        const colors = Object.keys(colorKeys)
+        return colors.reduce((acc, color) => {
+            if (Math.random() < CONFIG.colorChances[color as keyof typeof CONFIG.colorChances]) {
+                return colorKeys[color as keyof typeof colorKeys]
+            }
+            return acc
+        }, colorKeys.primary)
     }
     
-    const generateParticles = (canvas: HTMLCanvasElement) => {
+    const generateParticles = useCallback((canvas: HTMLCanvasElement) => {
         const ctx = canvas.getContext('2d')
         const particles: Particle[] = Array.from({ length: CONFIG.particles.number }, (): Particle => {
             return {
@@ -82,15 +93,7 @@ export default function Background() {
         }
     
         draw()
-    }
-
-    const resizeCanvas = () => {
-        const canvas = canvasRef.current
-        if (canvas) {
-            canvas.width = window.innerWidth
-            canvas.height = window.innerHeight
-        }
-    }
+    }, [])
 
     useEffect(() => {
         const canvas = canvasRef.current
@@ -103,8 +106,13 @@ export default function Background() {
     }, [])
 
     useEffect(() => {
-        resizeCanvas()
-    }, [screenWidth, screenHeight])
+        const canvas = canvasRef.current
+        if (canvas) {
+            canvas.width = screenWidth
+            canvas.height = screenHeight
+            generateParticles(canvas)
+        }
+    }, [screenWidth, screenHeight, generateParticles])
 
     return (
         <canvas className="bg-canvas" ref={canvasRef}></canvas>
