@@ -12,14 +12,18 @@ const CONFIG = {
             max: 8,
         },
         speed: {
-            min: 0.05,
-            max: 0.2,
+            min: 0.01,
+            max: 0.05,
         }
     },
-    colorChances: {
-        primary: 0.7,
-        secondary: 0.1,
-        accent: 0.2,
+    chances: {
+        isBlurred: 0.5,
+        isPulsing: 0.2,
+        color: {
+            primary: 0.7,
+            secondary: 0.1,
+            accent: 0.2,
+        }
     }
 }
 
@@ -30,18 +34,18 @@ interface Particle {
     color: string
     size: number
     isBlurred?: boolean
+    isPulsing?: boolean
 }
 
-export default function Background() {
+export default function HeroCanvasBackground() {
     const { screenWidth, screenHeight } = useScreenSize()
-    console.log(screenWidth, screenHeight)
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
     const getRandomColor = () => {
         const colorKeys = omitKeys(COLORS, ['background', 'text'])
         const colors = Object.keys(colorKeys)
         return colors.reduce((acc, color) => {
-            if (Math.random() < CONFIG.colorChances[color as keyof typeof CONFIG.colorChances]) {
+            if (Math.random() < CONFIG.chances.color[color as keyof typeof CONFIG.chances.color]) {
                 return colorKeys[color as keyof typeof colorKeys]
             }
             return acc
@@ -57,7 +61,8 @@ export default function Background() {
                 vy: getIntInRange(CONFIG.particles.speed.min, CONFIG.particles.speed.max),
                 color: getRandomColor(),
                 size: getIntInRange(CONFIG.particles.size.min, CONFIG.particles.size.max),
-                isBlurred: Math.random() > 0.5,
+                isBlurred: Math.random() > CONFIG.chances.isBlurred,
+                isPulsing: Math.random() > CONFIG.chances.isPulsing,
             }
         })
     
@@ -70,6 +75,8 @@ export default function Background() {
                     ctx.shadowColor = particle.color
                     ctx.shadowBlur = 20
                 }
+                if (particle.isPulsing) {
+                    ctx.globalAlpha = Math.abs(Math.sin(particle.y / 100))         }
                 ctx.fill()
             }
         }
