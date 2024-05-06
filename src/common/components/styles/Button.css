@@ -12,6 +12,14 @@
   margin: 0.5rem;
   display: inline-block;
   min-width: 200px;
+  position: relative;
+}
+
+.button .material-symbols-outlined {
+  position: absolute;
+  top: 0;
+  right: 10;
+  transform: scale(.5);
 }
 
 .button-primary {
