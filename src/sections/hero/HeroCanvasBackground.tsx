@@ -122,6 +122,6 @@ export default function HeroCanvasBackground() {
     }, [screenWidth, screenHeight, generateParticles])
 
     return (
-        <canvas className="bg-canvas" ref={canvasRef}></canvas>
+        <canvas className="bg-canvas" ref={canvasRef} id="canvas"></canvas>
     )
 }

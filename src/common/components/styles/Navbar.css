@@ -1,0 +1,28 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s;
+}
+
+.navlist {
+    list-style-type: none;
+}
+
+.link-img {
+   width: 100%;
+   max-width: 30px;
+}
+
+.active {
+    border-bottom: 2px solid var(--accent);
+}
+
+.github-icon {
+    filter: invert(1);
+}

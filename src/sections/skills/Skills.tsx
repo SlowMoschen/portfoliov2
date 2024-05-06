@@ -4,7 +4,7 @@ import { frontEndSkills, backEndSkills, otherSkills } from "../../assets/icons/s
 
 export default function Skills() {
   return (
-    <div className="skills-section">
+    <div className="skills-section" id="skills">
       <h1 className="underlined">Skills</h1>
       <div className="skills-wrapper">
         <SkillGrid title="Frontend" skills={frontEndSkills} />

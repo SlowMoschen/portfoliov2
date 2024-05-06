@@ -2,16 +2,13 @@ import HeroCanvasBackground from "./HeroCanvasBackground";
 import "./styles/HeroSection.css";
 import svg from "../../assets/icons/hero.svg";
 import Button from "../../common/components/Button";
+import { jumpTo } from "../../utils/helper";
 
 export default function HeroSection() {
 
-  const jumpTo = (section: string) => {
-    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
     <>
-      <section>
+      <section id="home">
         <HeroCanvasBackground />
         <div>
           <h1>
@@ -20,10 +17,10 @@ export default function HeroSection() {
           <p>
             Ein angagierter <span className="underlined">Junior Fullstack Developer</span> aus Österreich.
           </p>
-          <Button variant="contained" styles="primary" size="md" onClick={() => jumpTo('contact')}>
+          <Button variant="contained" styles="primary" size="md" onClick={() => jumpTo('kontakt')}>
             Kontaktieren
           </Button>
-          <Button variant="outlined" styles="secondary" size="md" onClick={() => jumpTo('projects')}>
+          <Button variant="outlined" styles="secondary" size="md" onClick={() => jumpTo('projekte')}>
             Projekte
           </Button>
         </div>

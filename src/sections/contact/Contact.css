@@ -1,0 +1,16 @@
+.contact-section {
+    margin: 25rem 0;
+}
+
+.contact-section h1 {
+    margin-bottom: 2rem;
+}
+
+.contact-section p {
+    font-size: 1.6rem;
+}
+
+.contact-section a {
+    color: var(--primary);
+    text-decoration: none;
+}

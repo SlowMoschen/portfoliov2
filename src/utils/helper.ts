@@ -10,3 +10,15 @@ export function omitKeys<T, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
   });
   return shallowCopy;
 }
+
+export const jumpTo = (section: string) => {
+  const offset = 100;
+  const element = document.querySelector(`#${section}`);
+  const elementPosition = element?.getBoundingClientRect().top || 0;
+  const offsetPosition = elementPosition - offset;
+
+  window.scrollBy({
+    top: offsetPosition,
+    behavior: "smooth",
+  });
+}

@@ -64,7 +64,8 @@ export default function Timeline() {
   ];
 
   return (
-    <div className="timeline-box" id="projects">
+    <div className="timeline-box">
+      <section id="projekte" className="blub"></section>
       <h1 className="underlined header-title">Meine Projekte</h1>
       <VerticalTimeline lineColor="var(--text)">
         {timelineElements.map((element, index) => (

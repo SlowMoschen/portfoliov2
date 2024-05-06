@@ -16,6 +16,7 @@ import socketio from './socketio-icon.svg';
 import drizzle from './drizzle.svg';
 import github from './github.svg';
 import postman from './getpostman-icon.svg';
+import materialui from './material-ui-1.svg';
 
 const frontEndSkills = [
     { name: "HTML", icon: html },
@@ -24,6 +25,7 @@ const frontEndSkills = [
     { name: "React", icon: react },
     { name: "React Query", icon: reactquery },
     { name: "Tailwind CSS", icon: tailwind },
+    { name: "Material-UI", icon: materialui },
 ]
 
 const backEndSkills = [

@@ -6,6 +6,10 @@
     margin-top: 10rem;
 }
 
+.timeline-box .blub {
+    height: 0;
+}
+
 .header-title {
     margin-bottom: 2rem;
 }
