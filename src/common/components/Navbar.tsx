@@ -76,10 +76,10 @@ export default function Navbar() {
       </div>
 
       <div>
-        <a href="www.linkedin.com/in/philipp-millner-4167b5286">
+        <a href="www.linkedin.com/in/philipp-millner-4167b5286" target="_blank">
           <img src={linkedin} alt="" className="link-img" />
         </a>
-        <a href="">
+        <a href="https://github.com/SlowMoschen" target="_blank">
           <img src={github} alt="" className="link-img github-icon" />
         </a>
       </div>
