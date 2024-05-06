@@ -1,6 +1,6 @@
 import HeroCanvasBackground from "./HeroCanvasBackground";
 import "./styles/HeroSection.css";
-import svg from "../../assets/hero.svg";
+import svg from "../../assets/icons/hero.svg";
 import Button from "../../common/components/Button";
 
 export default function HeroSection() {
@@ -27,7 +27,7 @@ export default function HeroSection() {
             Projekte
           </Button>
         </div>
-        <img src={svg} alt="hero" />
+        <img src={svg} alt="hero" className="hero-img"/>
       </section>
     </>
   );

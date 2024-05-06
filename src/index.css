@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  width: 100%;
+}
+
 .animated-text {
   background-image: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
     background-clip: text;

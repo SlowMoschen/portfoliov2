@@ -1,5 +1,6 @@
 import HeroSection from './sections/hero/HeroSection'
 import Timeline from './sections/projects/Timeline'
+import Skills from './sections/skills/Skills'
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
         <HeroSection />
         <Timeline />
+        <Skills />
     </>
   )
 }
