@@ -119,9 +119,10 @@ export default function HeroCanvasBackground() {
             canvas.height = screenHeight
             generateParticles(canvas)
         }
-    }, [screenWidth, screenHeight, generateParticles])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [screenWidth])
 
     return (
-        <canvas className="bg-canvas" ref={canvasRef} id="canvas"></canvas>
+        <canvas className="bg-canvas" ref={canvasRef}></canvas>
     )
 }
