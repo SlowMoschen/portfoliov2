@@ -1,0 +1,41 @@
+name: CD to Web Server
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy_frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "21.x"
+
+      - name: 📡 Install dependencies 📡
+        working-directory: ./client
+        run: npm ci
+
+      - name: 🏗 Building App 🏗
+        working-directory: ./client
+        run: npm run build
+        env:
+          CI: ""
+
+      - name: 🚀 deploying 🚀
+        uses: wangyucode/sftp-upload-action@v2.0.2
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 22
+          localDir: ./dist
+          remoteDir: ./Portfolio
