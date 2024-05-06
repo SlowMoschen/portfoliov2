@@ -59,21 +59,24 @@ export default function Navbar() {
   }, []);
 
   const navBarStyles = {
-    backgroundColor: isMobile ? "var(--primary)" : background === "transparent" ? "transparent" : "var(--primary)",
+    backgroundColor: isMobile
+      ? "var(--primary)"
+      : background === "transparent"
+      ? "transparent"
+      : "var(--primary)",
   };
 
   if (isMobile) {
     return (
       <>
         <nav className="mobile-nav" style={navBarStyles}>
-        <span
-          className="material-symbols-outlined burger"
-          onClick={() => setIsNavVisible(!isNavVisible)}
-        >
-          menu
-        </span>
-        {
-          isNavVisible && (
+          <span
+            className="material-symbols-outlined burger"
+            onClick={() => setIsNavVisible(!isNavVisible)}
+          >
+            menu
+          </span>
+          {isNavVisible && (
             <div className="mobile-nav-content">
               {sections.map((section) => (
                 <Button
@@ -99,8 +102,7 @@ export default function Navbar() {
                 </a>
               </div>
             </div>
-          )
-        }
+          )}
         </nav>
       </>
     );
@@ -113,13 +115,17 @@ export default function Navbar() {
           <Button
             key={section}
             onClick={() => {
-              setActive(section);
               jumpTo(section);
             }}
             size="lg"
             styles={active === section ? "accent" : "secondary"}
             variant="text"
-            style={{ fontWeight: 800, letterSpacing: "0.1rem"}}
+            style={{
+              fontWeight: 800,
+              letterSpacing: "0.1rem",
+              textDecoration: active === section ? "underline" : "none",
+              textUnderlineOffset: "0.2rem",
+            }}
           >
             {section}
           </Button>
