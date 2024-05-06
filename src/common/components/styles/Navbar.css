@@ -10,6 +10,31 @@
     transition: background-color 0.5s;
 }
 
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-visible {
+    display: flex;
+}
+
+.links-mobile {
+    display: none;
+}
+
+.burger {
+    color: var(--secondary);
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+}
+
 .navlist {
     list-style-type: none;
 }
