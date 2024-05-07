@@ -1,8 +1,8 @@
-@import url('./root.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("./root.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--background);
@@ -17,10 +17,10 @@ img {
 
 .animated-text {
   background-image: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 300% 300%;
-    animation: text-bg 8s ease-in-out infinite;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: text-bg 8s ease-in-out infinite;
 }
 
 .underlined {
@@ -29,14 +29,74 @@ img {
   text-underline-offset: 0.2rem;
 }
 
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.from-left {
+  animation: fromLeft 0.5s ease-in-out;
+}
+
+.from-right {
+  animation: fromRight 0.5s ease-in-out;
+}
+
+.from-bottom {
+  animation: fromBottom 0.5s ease-in-out;
+}
+
+.zero-opacity {
+  opacity: 0;
+}
+
+.left-start {
+  transform: translateX(-150%);
+}
+
 @keyframes text-bg {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fromLeft {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fromRight {
+  from {
+    transform: translateX(150%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fromBottom {
+  from {
+    transform: translateY(150%);
+  }
+  to {
+    transform: translateY(0);
   }
 }

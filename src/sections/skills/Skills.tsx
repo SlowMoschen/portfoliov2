@@ -7,9 +7,9 @@ export default function Skills() {
     <div className="skills-section" id="skills">
       <h1 className="underlined">Skills</h1>
       <div className="skills-wrapper">
-        <SkillGrid title="Frontend" skills={frontEndSkills} />
-        <SkillGrid title="Backend" skills={backEndSkills} />
-        <SkillGrid title="Andere" skills={otherSkills} />
+        <SkillGrid title="Frontend" animation="from-left" skills={frontEndSkills} />
+        <SkillGrid title="Backend" animation="from-bottom" skills={backEndSkills} />
+        <SkillGrid title="Andere" animation="from-right" skills={otherSkills} />
       </div>
     </div>
   );
