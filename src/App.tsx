@@ -1,22 +1,34 @@
-import Footer from './common/components/Footer'
-import Navbar from './common/components/Navbar'
-import Contact from './sections/contact/Contact'
-import HeroSection from './sections/hero/HeroSection'
-import Timeline from './sections/projects/Timeline'
-import Skills from './sections/skills/Skills'
+import { lazy, useEffect, useState } from "react";
+import Navbar from "./common/components/Navbar";
+import HeroSection from "./sections/hero/HeroSection";
+const Skills = lazy(() => import("./sections/skills/Skills"));
+const Timeline = lazy(() => import("./sections/projects/Timeline"));
+const Contact = lazy(() => import("./sections/contact/Contact"));
+const Footer = lazy(() => import("./common/components/Footer"));
 
 function App() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+  return isLoading ? (
+    <div className="loading-box">
+      <span className="loader"></span>
+    </div>
+  ) : (
     <>
-        <Navbar />
-        <HeroSection />
-        <Timeline />
-        <Skills />
-        <Contact />
-        <Footer />
+      <Navbar />
+      <HeroSection />
+      <Timeline />
+      <Skills />
+      <Contact />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
